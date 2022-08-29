@@ -105,3 +105,24 @@ function handleInterval() {
         }
     }, 1000);
 }
+
+function checkAnswer(userPick) {
+
+    var correctAnswer = questionObject[questionIndex].answer;
+
+    if (correctAnswer === userPick) {
+        score++;
+        answerCheck.textContent = "Correct!";
+    }
+    else {
+        timerCount = timerCount - 10;
+        answerCheck.textContent = "Your answer is incorrect";
+    }
+
+    questionIndex++;
+    displayQuestions();
+    
+    setTimeout(function() {
+        answerCheck.textContent = "";
+    }, 1000);
+}
