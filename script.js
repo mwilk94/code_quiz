@@ -21,13 +21,13 @@ var scoreInitial = document.querySelector(".score-initial");
 
 
 // Declare and Initialize variables
-var timerCountDown = 60;
+var timerCountDownDown = 60;
 var questionIndex = 0;
 var score = 0;
 var timerInterval;
 
 // array of questions
-let questionLists = [
+let questionObject = [
     {
       question: "1.How to write an IF statement in JavaScript?",
       optionA: "A: if i = 5",
@@ -77,4 +77,31 @@ let questionLists = [
     displayQuestions();
     handleInterval();
   }
-  
+
+  function displayQuestions() {
+    quizOver.style.display = "none";
+
+    var currentQuestion = questionObject[questionIndex];
+
+    if (questionIndex === questionObject.length) {
+        return showScore();
+    }
+    questionsEl.textContent = currentQuestion.question;
+    button_A.textContent = currentQuestion.optionA;
+    button_B.textContent = currentQuestion.optionB;
+    button_C.textContent = currentQuestion.optionC;
+    button_D.textContent = currentQuestion.optionD;
+}
+
+function handleInterval() {
+    timerInterval = setInterval(function () {
+        timerCountDown--;
+        timerEl.textContent = timerCountDown;
+
+        if(timerCountDown < 0 && questionIndex !== questionObject.length) {
+            clearInterval(timerInterval);
+            alert("You ran out of TIME!");
+            showScore();
+        }
+    }, 1000);
+}
