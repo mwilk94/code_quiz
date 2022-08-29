@@ -1,0 +1,13 @@
+body {
+    background-color: rgb(33, 107, 64);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.main-page {
+    margin-top: 150px;
+    text-align: center;
+}
+
+.quiz-in-progress {
+    text-align: center;
+}
