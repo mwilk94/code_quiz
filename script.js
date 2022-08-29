@@ -10,15 +10,14 @@ var submitInitialBtn = document.getElementById("submit-initial");
 var playAgainBtn = document.getElementById("play-again");
 var initialInput = document.getElementById("initial");
 
-var mainPageEl = document.querySelector(".main-page");
-var quizInProgressEl = document.querySelector(".quiz-in-progress");
+var mainPage = document.querySelector(".main-page");
+var quizInProgress = document.querySelector(".quiz-in-progress");
 var timerEl = document.querySelector(".timer");
 var questionsEl = document.querySelector(".questions");
-var answerCheckEl = document.querySelector(".answer-check");
-var quizOverEl = document.querySelector(".quiz-over");
-var finalScoreEl = document.querySelector(".final-score");
-var highScorePageEl = document.querySelector(".score-page");
-var scoreInitialEl = document.querySelector(".score-initial");
+var answerCheck = document.querySelector(".answer-check");
+var quizOver = document.querySelector(".quiz-over");
+var ScorePage = document.querySelector(".score-page");
+var scoreInitial = document.querySelector(".score-initial");
 
 
 // Declare and Initialize variables
@@ -65,17 +64,17 @@ let questionLists = [
   
   // feature display - disappear
   
-  quiz.style.display = "none"
-  finalSocre.style.display = "none"
+  quizInProgress.style.display = "none";
+  quizOver.style.display = "none";
+  ScorePage.style.display = "none";
   
   function beginQuiz() {
-    introText.innerHTML = ""
-    startBtn.style.display = "none"
-    quiz.style.display = "block"
-    question.innerHTML = questionLists[iterationNumber].question;
-    answerA.innerHTML = questionLists[iterationNumber].optionA;
-    answerB.innerHTML = questionLists[iterationNumber].optionB;
-    answerC.innerHTML = questionLists[iterationNumber].optionC;
-    answerD.innerHTML = questionLists[iterationNumber].optionD;
+    quizInProgress.style.display = "block";
+    mainPage.style.display = "none";
+    ScorePage.style.display = "none";
+    timerEl.textContent = 60;
+    answerCheck.textContent = '';
+    displayQuestions();
+    handleInterval();
   }
   
