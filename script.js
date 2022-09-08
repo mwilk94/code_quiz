@@ -1,5 +1,4 @@
 var startButton = document.getElementById("start-button");
-var highScoreButton = document.getElementById("highscore-button");
 
 var button_A = document.getElementById("buttonA");
 var button_B = document.getElementById("buttonB");
@@ -20,8 +19,6 @@ var quizOver = document.querySelector(".quiz-over");
 var finalScore = document.querySelector(".final-score");
 var ScorePage = document.querySelector(".score-page");
 var scoreInitial = document.querySelector(".score-initial");
-var highestScore = document.querySelector(".highest-score");
-
 
 
 // Declare and Initialize variables
@@ -156,7 +153,6 @@ function submitInitial() {
 
     if (user === "") {
         alert("Please input your initals!");
-        return;
     } else {
         stackedUserScores.push(UserScores);
         localStorage.setItem("savedScores", JSON.stringify(stackedUserScores));
@@ -182,18 +178,10 @@ function displayUserAndScores() {
         scoreArray.push(Object.values(stackedUserScores[j])[1]);
     }
 
-    var maxScore = Math.max(...scoreArray);
-
-    for (var k=0; k<numOfUsers; k++) {
-        if (stackedUserScores[k].score === maxScore) {
-            highestScore.textContent = stackedUserScores[k].name.concat(space, stackedUserScores[k].score);
-        }
-    }
-
 }
 
 
-function highScorePage() {
+function ScorePage() {
     mainPage.style.display = "none";
     quizInProgress.style.display = "none";
     quizOver.style.display = "none";
@@ -206,11 +194,9 @@ function highScorePage() {
 function clearScore() {
     window.localStorage.clear();
     scoreInitial.textContent = "";
-    highestScore.textContent = "";
 }
 
 // addEventListeners
 startButton.addEventListener("click", beginQuiz);
 submitInitialBtn.addEventListener("click", submitInitial);
-highScoreButton.addEventListener("click", highScorePage);
 clearScoresBtn.addEventListener("click", clearScore);
